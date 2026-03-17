@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Yazı</title>
+    <link rel="icon" type="image/png" href="/static/logo.png">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-section">
+            <img src="/static/logo.png" alt="BarsLab Logo" class="logo">
+            <h1>BarsLab</h1>
+        </div>
+        <div class="nav-links">
+            <a href="/">Anasayfa</a>
+            <a href="/logout" style="background: #dc3545; border-color: #dc3545; color: white;">Çıkış Yap</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Yeni Blog Yazısı</h1>
+
+        <form method="POST">
+            <label>Başlık:</label>
+            <input name="title" required>
+
+            <label>Kapak Resmi URL'si (opsiyonel):</label>
+            <input name="image_url" type="url" placeholder="https://example.com/image.jpg">
+
+            <label>İçerik:</label>
+            <textarea name="content" rows="10" required></textarea>
+
+            <button>Kaydet</button>
+        </form>
+        
+        <a href="/admin">← Geri Dön</a>
+    </div>
+</body>
+</html>

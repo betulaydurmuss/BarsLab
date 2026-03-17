@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="icon" type="image/png" href="/static/logo.png">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-section">
+            <img src="/static/logo.png" alt="BarsLab Logo" class="logo">
+            <h1>BarsLab</h1>
+        </div>
+        <div class="nav-links">
+            <a href="/">Anasayfa</a>
+            <a href="/login">Admin Giriş</a>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <img src="/static/logo.png" alt="BarsLab Logo" class="login-logo">
+                <h1>Admin Girişi</h1>
+                <p>Devam etmek için giriş yapın</p>
+            </div>
+
+            <form method="POST">
+                <div class="form-group">
+                    <label>Kullanıcı Adı</label>
+                    <input name="username" type="text" placeholder="Kullanıcı adınızı girin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Şifre</label>
+                    <input name="password" type="password" placeholder="Şifrenizi girin" required>
+                </div>
+                
+                <button type="submit" class="login-button">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

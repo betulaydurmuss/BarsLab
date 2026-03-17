@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazıyı Düzenle</title>
+    <link rel="icon" type="image/png" href="/static/logo.png">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-section">
+            <img src="/static/logo.png" alt="BarsLab Logo" class="logo">
+            <h1>BarsLab</h1>
+        </div>
+        <div class="nav-links">
+            <a href="/">Anasayfa</a>
+            <a href="/logout" style="background: #dc3545; border-color: #dc3545; color: white;">Çıkış Yap</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Blog Yazısını Düzenle</h1>
+
+        <form method="POST">
+            <input type="hidden" name="id" value="{{.ID}}">
+            
+            <label>Başlık:</label>
+            <input name="title" value="{{.Title}}" required>
+
+            <label>Kapak Resmi URL'si (opsiyonel):</label>
+            <input name="image_url" type="url" value="{{.ImageURL}}" placeholder="https://example.com/image.jpg">
+
+            <label>İçerik:</label>
+            <textarea name="content" rows="10" required>{{.Content}}</textarea>
+
+            <button type="submit">Güncelle</button>
+        </form>
+        
+        <a href="/admin">← Geri Dön</a>
+    </div>
+</body>
+</html>

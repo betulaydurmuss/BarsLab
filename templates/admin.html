@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="icon" type="image/png" href="/static/logo.png">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-section">
+            <img src="/static/logo.png" alt="BarsLab Logo" class="logo">
+            <h1>BarsLab</h1>
+        </div>
+        <div class="nav-links">
+            <a href="/">Anasayfa</a>
+            <a href="/logout" style="background: #dc3545; border-color: #dc3545; color: white;">Çıkış Yap</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Admin Panel</h1>
+
+        <div class="admin-actions">
+            <a href="/new-post" class="btn-primary">Yeni Blog Yazısı Ekle</a>
+        </div>
+
+        <h2 style="margin-top: 40px; margin-bottom: 20px;">Mevcut Blog Yazıları</h2>
+
+        {{if .}}
+        <div class="admin-posts-list">
+            {{range .}}
+            <div class="admin-post-item">
+                <div class="admin-post-content">
+                    <h3>{{.Title}}</h3>
+                    <p>{{.Content}}</p>
+                </div>
+                <div class="admin-post-actions">
+                    <a href="/edit-post?id={{.ID}}" class="btn-edit">Düzenle</a>
+                    <button type="button" class="btn-delete" onclick="showDeleteConfirm({{.ID}}, '{{.Title}}')">Sil</button>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        {{else}}
+        <div class="empty-state">
+            <p>Henüz blog yazısı yok.</p>
+        </div>
+        {{end}}
+    </div>
+
+    <div id="confirmModal" class="confirm-modal">
+        <div class="confirm-modal-content">
+            <h3>Silme Onayı</h3>
+            <p id="confirmMessage"></p>
+            <div class="confirm-buttons">
+                <button class="btn-cancel" onclick="closeConfirmModal()">İptal</button>
+                <button class="btn-confirm" onclick="confirmDelete()">Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <form id="deleteForm" method="POST" action="/delete-post" style="display: none;">
+        <input type="hidden" name="id" id="deleteId">
+    </form>
+
+    <script>
+        let currentDeleteId = null;
+
+        function showDeleteConfirm(id, title) {
+            currentDeleteId = id;
+            document.getElementById('confirmMessage').textContent = 
+                '"' + title + '" başlıklı yazıyı kalıcı olarak silmek istediğinize emin misiniz?';
+            document.getElementById('confirmModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            currentDeleteId = null;
+        }
+
+        function confirmDelete() {
+            if (currentDeleteId) {
+                document.getElementById('deleteId').value = currentDeleteId;
+                document.getElementById('deleteForm').submit();
+            }
+        }
+    </script>
+</body>
+</html>
