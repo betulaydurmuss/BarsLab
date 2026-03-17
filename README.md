@@ -29,4 +29,3 @@ Kullanıcı adı: `admin`
 go run main.go
 http://localhost:8080
 
-Bu proje eğitim amaçlı geliştirilmiştir.
